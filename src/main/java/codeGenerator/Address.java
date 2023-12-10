@@ -5,14 +5,22 @@ package codeGenerator;
  */
 
 public class Address {
-    public int num;
-    public TypeAddress Type;
-    public varType varType;
+    private int num;
+    private TypeAddress Type;
+    private varType varType;
 
     public Address(int num, varType varType, TypeAddress Type) {
         this.num = num;
         this.Type = Type;
         this.varType = varType;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public codeGenerator.varType getVarType() {
+        return varType;
     }
 
     public Address(int num, varType varType) {
@@ -29,7 +37,8 @@ public class Address {
                 return "@" + num;
             case Imidiate:
                 return "#" + num;
+            default:
+                return String.valueOf(num);
         }
-        return num + "";
     }
 }
