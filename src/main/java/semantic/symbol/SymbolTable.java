@@ -20,6 +20,9 @@ public class SymbolTable {
         mem = memory;
         klasses = new HashMap<>();
         keyWords = new HashMap<>();
+        initializeKeyWords();
+    }
+    private void initializeKeyWords() {
         keyWords.put("true", new Address(1, varType.Bool, TypeAddress.Imidiate));
         keyWords.put("false", new Address(0, varType.Bool, TypeAddress.Imidiate));
     }
