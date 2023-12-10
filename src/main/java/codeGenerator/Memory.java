@@ -20,8 +20,11 @@ public class Memory {
         lastDataAddress = stratDataMemoryAddress;
     }
 
-    public int getTemp() {
+    public void increaseLastTempIndexByTempSize(){
         lastTempIndex += tempSize;
+    }
+    public int getTemp() {
+        increaseLastTempIndexByTempSize();
         return lastTempIndex - tempSize;
     }
 
