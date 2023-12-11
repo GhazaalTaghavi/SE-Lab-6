@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SymbolTable {
+    ErrorHandler errorHandler = ErrorHandler.getInstance();
     private Map<String, Klass> klasses;
     private Map<String, Address> keyWords;
     private Memory mem;
@@ -33,7 +34,7 @@ public class SymbolTable {
 
     public void addClass(String className) {
         if (klasses.containsKey(className)) {
-            ErrorHandler.printError("This class already defined");
+            errorHandler.printError("This class already defined");
         }
         klasses.put(className, new Klass());
     }
@@ -44,7 +45,7 @@ public class SymbolTable {
 
     public void addMethod(String className, String methodName, int address) {
         if (klasses.get(className).Methodes.containsKey(methodName)) {
-            ErrorHandler.printError("This method already defined");
+            errorHandler.printError("This method already defined");
         }
         klasses.get(className).Methodes.put(methodName, new Method(address, lastType));
     }
@@ -56,7 +57,7 @@ public class SymbolTable {
     public void addMethodLocalVariable(String className, String methodName, String localVariableName) {
 //        try {
         if (klasses.get(className).Methodes.get(methodName).localVariable.containsKey(localVariableName)) {
-            ErrorHandler.printError("This variable already defined");
+            errorHandler.printError("This variable already defined");
         }
         klasses.get(className).Methodes.get(methodName).localVariable.put(localVariableName, new Symbol(lastType, mem.getDateAddress()));
 //        }catch (NullPointerException e){
