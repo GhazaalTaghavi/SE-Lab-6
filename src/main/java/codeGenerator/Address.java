@@ -4,10 +4,10 @@ package codeGenerator;
  * Created by mohammad hosein on 6/28/2015.
  */
 
-public class Address {
-    private int num;
+abstract class Address {
+    protected int num;
     private TypeAddress Type;
-    private varType varType;
+    protected varType varType;
 
     public Address(int num, varType varType, TypeAddress Type) {
         this.num = num;
@@ -29,16 +29,39 @@ public class Address {
         this.varType = varType;
     }
 
+    public abstract String toString();
+}
+
+class DirectAddress extends Address {
+    public DirectAddress(int num, codeGenerator.varType varType, TypeAddress Type) {
+        super(num, varType, Type);
+    }
+
+    @Override
     public String toString() {
-        switch (Type) {
-            case Direct:
-                return num + "";
-            case Indirect:
-                return "@" + num;
-            case Imidiate:
-                return "#" + num;
-            default:
-                return String.valueOf(num);
-        }
+        return String.valueOf(num);
+    }
+}
+
+class IndirectAddress extends Address {
+    public IndirectAddress(int num, codeGenerator.varType varType, TypeAddress Type) {
+        super(num, varType, Type);
+    }
+
+    @Override
+
+    public String toString() {
+        return "@" + num;
+    }
+}
+
+class ImmediateAddress extends Address {
+    public ImmediateAddress(int num, codeGenerator.varType varType, TypeAddress Type) {
+        super(num, varType, Type);
+    }
+
+    @Override
+    public String toString() {
+        return "#" + num;
     }
 }
