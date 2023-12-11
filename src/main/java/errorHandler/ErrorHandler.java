@@ -5,28 +5,10 @@ package errorHandler;
  */
 
 public class ErrorHandler {
-    private static ErrorHandler instance;
-    private boolean hasError;
-    public boolean isHasError() {
-        return hasError;
-    }
+    public static boolean hasError = false;
 
-    private ErrorHandler() {
-        hasError = false;
-    }
-
-    public static ErrorHandler getInstance() {
-        if (instance == null) {
-            instance = new ErrorHandler();
-        }
-        return instance;
-    }
-
-    public void printError(String msg) {
+    public static void printError(String msg) {
         hasError = true;
         System.out.println(msg);
-    }
-    public boolean hasError() {
-        return hasError;
     }
 }

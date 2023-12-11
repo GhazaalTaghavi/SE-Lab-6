@@ -13,7 +13,6 @@ import scanner.lexicalAnalyzer;
 import scanner.token.Token;
 
 public class Parser {
-    ErrorHandler errorHandler = ErrorHandler.getInstance();
     private ArrayList<Rule> rules;
     private Stack<Integer> parsStack;
     private ParseTable parseTable;
@@ -79,7 +78,7 @@ public class Parser {
 //                    parsStack.pop();
             }
         }
-        if (!errorHandler.isHasError()) cg.printMemory();
+        if (!ErrorHandler.hasError) cg.printMemory();
     }
 
     private void handleReduceAction(Action currentAction, Token lookAhead) {
